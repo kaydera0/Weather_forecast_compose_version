@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Weather forecast</string>
+    <string name="c_or_f">C/F</string>
+    <string name="mon">Monday</string>
+    <string name="tue">Tuesday</string>
+    <string name="wed">Wednesday</string>
+    <string name="thu">Thursday</string>
+    <string name="fri">Friday</string>
+    <string name="sat">Saturday</string>
+    <string name="sun">Sunday</string>
+    <string name="c">c</string>
+
+</resources>
