@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/weekday"
@@ -12,7 +12,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textColor="@color/white"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -38,17 +41,19 @@
         android:layout_width="51dp"
         android:layout_height="24dp"
         android:text="TextView"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/humility"
+        app:layout_constraintEnd_toStartOf="@+id/minTemp"
         app:layout_constraintTop_toTopOf="@+id/humility" />
 
     <TextView
         android:id="@+id/minTemp"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginEnd="10dp"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/maxTemp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/maxTemp" />
 
     <View

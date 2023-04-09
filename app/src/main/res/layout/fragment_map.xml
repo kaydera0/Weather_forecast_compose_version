@@ -15,8 +15,6 @@
         map:uiZoomControls="true"
         map:uiRotateGestures="true"
         map:uiTiltGestures="true"
-
-
 />
 
 </FrameLayout>

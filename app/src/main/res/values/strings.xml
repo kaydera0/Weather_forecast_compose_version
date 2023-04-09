@@ -9,5 +9,6 @@
     <string name="sat">Saturday</string>
     <string name="sun">Sunday</string>
     <string name="c">c</string>
+    <string name="error">Error message</string>
 
 </resources>

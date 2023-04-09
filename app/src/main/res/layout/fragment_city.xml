@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CityFragment"
-    android:background="@color/grey">
+    android:id="@+id/cityFragmentContraint">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey"
+        android:alpha="0.5">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_city_fragment"
@@ -19,12 +26,13 @@
 
     <TextView
         android:id="@+id/temperature"
-        android:layout_width="77dp"
+        android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:layout_marginTop="90dp"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
