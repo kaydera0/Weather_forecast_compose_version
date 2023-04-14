@@ -11,6 +11,10 @@ import javax.inject.Inject
 
 class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
 
+    val days = 5
+    val kelvin = 273
+    val responseAmount = 40
+
 
     suspend fun getCityDataList(): List<CityData> {
         val list = ArrayList<CityData>()
@@ -30,7 +34,7 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
         return CityData(
             name = response.city.name,
             time = timezoneToTime(response.city.timezone),
-            temperature = (response.list[0].main.temp.toFloat().toInt() - 273).toString(),
+            temperature = (response.list[0].main.temp.toFloat().toInt() - kelvin).toString(),
             day = getWeekday(response.city.timezone),
             weatherDescription = response.list[0].weather[0].description,
             weeklyWeatherArrayList = getWeaklyWeatherArr(response.city.timezone, response)
@@ -55,7 +59,7 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
         response: MyResponse
     ): ArrayList<WeeklyWeather> {
         val list = ArrayList<WeeklyWeather>()
-        for (i in 0..4) {
+        for (i in 0..days-1) {
             val day = LocalDateTime.now(ZoneId.of("UTC"))
                 .plusSeconds(timezone.toLong()).dayOfWeek.plus(i.toLong())
             val weeklyWeather = WeeklyWeather(
@@ -72,13 +76,13 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
 
     fun getMinTemp(response: MyResponse, index: Int): String {
         val list = ArrayList<Int>()
-        val arrMinValues = IntArray(5)
+        val arrMinValues = IntArray(days)
         var count = 0
         var count2 = 0
-        for (i in 0..38) {
+        for (i in 0..responseAmount-1) {
             if (response.list[count].dt_txt.dropLast(9) == response.list[i].dt_txt.dropLast(9)) {
                 list.add(response.list[i].main.temp_min.toFloat().toInt())
-                if (i == 38) {
+                if (i == responseAmount-1) {
                     arrMinValues[count2++] = list.min()
                 }
             } else {
@@ -88,18 +92,18 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
                 count = i
             }
         }
-        return (arrMinValues[index] - 273).toString()
+        return (arrMinValues[index] - kelvin).toString()
     }
 
     fun getMaxTemp(response: MyResponse, index: Int): String {
-        val arrMasValues = IntArray(5)
+        val arrMasValues = IntArray(days)
         val list = ArrayList<Int>()
         var count = 0
         var count2 = 0
-        for (i in 0..38) {
+        for (i in 0..responseAmount-1) {
             if (response.list[count].dt_txt.dropLast(9) == response.list[i].dt_txt.dropLast(9)) {
                 list.add(response.list[i].main.temp_max.toFloat().toInt())
-                if (i == 38) {
+                if (i == responseAmount-1) {
                     arrMasValues[count2++] = list.max()
                 }
             } else {
@@ -109,6 +113,6 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
                 count = i
             }
         }
-        return (arrMasValues[index] - 273).toString()
+        return (arrMasValues[index] - kelvin).toString()
     }
 }

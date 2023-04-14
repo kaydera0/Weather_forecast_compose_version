@@ -10,6 +10,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherforecast.dataClasses.CityData
@@ -51,7 +52,7 @@ fun mainContainer(vm: MainViewModel) {
                 Divider(
                     thickness = 4.dp,
                     color = Color.White,
-                    modifier = Modifier.padding(horizontal = 50.dp)
+                    modifier = Modifier.padding(horizontal = 50.dp).testTag("BOTTOM_SHEET_DIVIDER")
                 )
                 if (cityList.value != null) {
                     for (i in 0..cityList.value?.size!! - 1) {
@@ -59,7 +60,7 @@ fun mainContainer(vm: MainViewModel) {
                     }
                 }
             }
-        }, sheetContainerColor = Color.DarkGray) {
+        }, sheetContainerColor = Color.DarkGray, modifier = Modifier.testTag("BOTTOM_SHEET")) {
         }
     }
     else {
