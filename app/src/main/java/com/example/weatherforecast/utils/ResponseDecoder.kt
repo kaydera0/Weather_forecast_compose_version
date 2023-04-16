@@ -82,7 +82,7 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
         for (i in 0..responseAmount-1) {
             if (response.list[count].dt_txt.dropLast(9) == response.list[i].dt_txt.dropLast(9)) {
                 list.add(response.list[i].main.temp_min.toFloat().toInt())
-                if (i == responseAmount-1) {
+                if (i == responseAmount-1&&count2<days) {
                     arrMinValues[count2++] = list.min()
                 }
             } else {
@@ -103,7 +103,7 @@ class ResponseDecoder @Inject constructor(val weatherApi: WeatherApi) {
         for (i in 0..responseAmount-1) {
             if (response.list[count].dt_txt.dropLast(9) == response.list[i].dt_txt.dropLast(9)) {
                 list.add(response.list[i].main.temp_max.toFloat().toInt())
-                if (i == responseAmount-1) {
+                if (i == responseAmount-1&&count2<days) {
                     arrMasValues[count2++] = list.max()
                 }
             } else {
